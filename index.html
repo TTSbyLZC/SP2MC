@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TTS Demos</title>
+  <style>
+    body {
+       /* margin: 0% 0%; */
+      max-width: 1366px;  /* 最大宽度 */
+      margin-left: auto;
+      margin-right: auto;
+      padding: 50px 30px;
+      background: #fff;
+      color: #111;
+      text-align: justify;
+      font-size: 17px;
+      font-family: sans-serif;
+      font-weight: 400;
+      line-height: 1.8;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    .justify-text {
+      text-align: justify;
+    }
+    .srctext {font-size: 17px;}
+    h1 {font-size: 1.75em;}
+    h2 {margin-bottom: 0.4em;}
+    hr {
+      height: 0.5px;
+      border-width: 0;
+      color: lightgray;
+      background-color: lightgray
+    }
+    table {table-layout: fixed;}
+    audio {width: 220px;}
+  </style>
+</head>
+
+<body>
+  <h1>Self-supervised Prosody Learning at Phoneme-level with Momentum Contrast for Speech Synthesis</h1>
+  
+
+  <p>
+  <div><b>Authors</b>: Zhao-Ci Liu, Ya-Jun Hu, Liping Chen, and Zhen-Hua Ling, <em>Senior Member, IEEE</em></div>
+  <div class="justify-text"><b>Abstract</b>: This paper investigates leveraging large-scale speech data to enhance prosodic modeling in speech synthesis, and introduces a model named SP2MC which achieves self-supervised prosody learning at phoneme-level with momentum contrast. This model incorporates dual convolutional encoders for speech and linear predictive coding (LPC) residual inputs to generate phoneme-level embeddings, which are masked and processed by a Transformer model to produce prosody representations. Two supervision modules are employed to generate phoneme-level supervision from speech waveforms and residuals. Momentum contrast is utilized to manage negative sample selection in contrastive learning. Finally, the SP2MC representations are integrated into a Fastspeech2-based acoustic model for speech synthesis. Experimental results indicate that the naturalness of speech synthesized by the proposed method is significantly better than that of baselines.</div>
+  <div><b>Comments</b>: Submitted to ICASSP 2025.</div>
+  </p>
+
+
+  <p>
+  <br>
+  <div><b></b></div>
+  <h2><b>Model comparison</b>:    </h2>
+  <hr>
+
+
+  <table>
+    <tr>
+      <th style="text-align: center">GT</th>
+      <th style="text-align: center">FS2</th>
+      <th style="text-align: center">LPR_Joint</th>
+      <th style="text-align: center">LPR_PE-w2v</th>
+      <th style="text-align: center">LPR_Combined</th>
+      <th style="text-align: center">LPR_Proposed</th>
+    </tr>
+    <tr>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/GT/00014103.wav" autoplay /></audio></td>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/FS2/00014103.wav" autoplay /></audio></td>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/LPR_Joint/00014103.wav" autoplay /></audio></td>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/LPR_PE-w2v/00014103.wav" autoplay /></audio></td>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/LPR_Combined/00014103.wav" autoplay /></audio></td>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/LPR_Proposed/00014103.wav" autoplay /></audio></td>
+    </tr>
+  </table>
+  <div class="srctext"><b>Text</b>: <em>整个 越洋城  ， 只留下 一个 声音  ， 从 山峰般 屹立的 黑夜中 传来的  ， 宛若 来自 远古的 神魔 咆哮  。</em></div>
+  <div class="srctext"><b>Translation</b>: <em>Throughout the entire Yueyang city, only one sound remained, coming from the towering darkness like a mountain, resembling a roar from ancient gods and demons.</em></div>
+
+  <hr>
+
+
+  <table>
+    <tr>
+      <th style="text-align: center">GT</th>
+      <th style="text-align: center">FS2</th>
+      <th style="text-align: center">LPR_Joint</th>
+      <th style="text-align: center">LPR_PE-w2v</th>
+      <th style="text-align: center">LPR_Combined</th>
+      <th style="text-align: center">LPR_Proposed</th>
+    </tr>
+    <tr>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/GT/00014415.wav" autoplay /></audio></td>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/FS2/00014415.wav" autoplay /></audio></td>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/LPR_Joint/00014415.wav" autoplay /></audio></td>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/LPR_PE-w2v/00014415.wav" autoplay /></audio></td>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/LPR_Combined/00014415.wav" autoplay /></audio></td>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/LPR_Proposed/00014415.wav" autoplay /></audio></td>
+    </tr>
+  </table>
+  <div class="srctext"><b>Text</b>: <em>并 以其 先后 灭 三国  ， 擒 三主的 非凡 战绩 和 正直的 为人 而 深受 唐太宗 和 唐高宗的 赏识 与 信任  。</em></div>
+  <div class="srctext"><b>Translation</b>: <em>And, due to his extraordinary achievements in successively defeating three kingdoms and capturing their three leaders, as well as his upright character, he earned the admiration and trust of Emperor Taizong and Emperor Gaozong of the Tang Dynasty.</em></div>
+
+  <hr>
+
+  <table>
+    <tr>
+      <th style="text-align: center">GT</th>
+      <th style="text-align: center">FS2</th>
+      <th style="text-align: center">LPR_Joint</th>
+      <th style="text-align: center">LPR_PE-w2v</th>
+      <th style="text-align: center">LPR_Combined</th>
+      <th style="text-align: center">LPR_Proposed</th>
+    </tr>
+    <tr>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/GT/00002458.wav" autoplay /></audio></td>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/FS2/00002458.wav" autoplay /></audio></td>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/LPR_Joint/00002458.wav" autoplay /></audio></td>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/LPR_PE-w2v/00002458.wav" autoplay /></audio></td>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/LPR_Combined/00002458.wav" autoplay /></audio></td>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/LPR_Proposed/00002458.wav" autoplay /></audio></td>
+    </tr>
+  </table>
+  <div class="srctext"><b>Text</b>: <em>黑哥 坐大 以后  ， 以 中化区 工商 联合会的 名义  ， 召集 所有的 建筑 公司 和 开发商 开了 一个 座谈会  。</em></div>
+  <div class="srctext"><b>Translation</b>: <em>Brother Hei, after taking charge, held a seminar in the name of the Zhonghua District Federation of Industry and Commerce, gathering all the construction companies and developers.</em></div>
+
+  <hr>
+
+
+  <table>
+    <tr>
+      <th style="text-align: center">GT</th>
+      <th style="text-align: center">FS2</th>
+      <th style="text-align: center">LPR_Joint</th>
+      <th style="text-align: center">LPR_PE-w2v</th>
+      <th style="text-align: center">LPR_Combined</th>
+      <th style="text-align: center">LPR_Proposed</th>
+    </tr>
+    <tr>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/GT/00005099.wav" autoplay /></audio></td>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/FS2/00005099.wav" autoplay /></audio></td>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/LPR_Joint/00005099.wav" autoplay /></audio></td>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/LPR_PE-w2v/00005099.wav" autoplay /></audio></td>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/LPR_Combined/00005099.wav" autoplay /></audio></td>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/LPR_Proposed/00005099.wav" autoplay /></audio></td>
+    </tr>
+  </table>
+  <div class="srctext"><b>Text</b>: <em>曾思涛 脑子里 这么 想的 时候  ， 不觉的 骂自己 很扯淡  ， 胡思 乱想的 水平 最近 有 飞跃的 意思  。</em></div>
+  <div class="srctext"><b>Translation</b>: <em>When Zeng Sitao had these thoughts in his mind, he couldn't help but curse himself for being ridiculous, realizing that his level of wild imagination had recently taken a significant leap.</em></div>
+
+  <hr>
+
+
+  <table>
+    <tr>
+      <th style="text-align: center">GT</th>
+      <th style="text-align: center">FS2</th>
+      <th style="text-align: center">LPR_Joint</th>
+      <th style="text-align: center">LPR_PE-w2v</th>
+      <th style="text-align: center">LPR_Combined</th>
+      <th style="text-align: center">LPR_Proposed</th>
+    </tr>
+    <tr>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/GT/00008937.wav" autoplay /></audio></td>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/FS2/00008937.wav" autoplay /></audio></td>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/LPR_Joint/00008937.wav" autoplay /></audio></td>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/LPR_PE-w2v/00008937.wav" autoplay /></audio></td>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/LPR_Combined/00008937.wav" autoplay /></audio></td>
+      <td style="text-align: center"><audio controls="controls"><source src="./demos/LPR_Proposed/00008937.wav" autoplay /></audio></td>
+    </tr>
+  </table>
+  <div class="srctext"><b>Text</b>: <em>唐三 没有 使用 自己的 群攻 技能  ， 面对 如此 众多 以 防御力 著称的 强攻 系魂师  。</em></div>
+  <div class="srctext"><b>Translation</b>: <em>Tang San did not use his group attack skills when facing such a large number of powerful attack-type soul masters known for their defensive abilities.</em></div>
+
+  <hr>
+
+  </p>
+
+</body>
+</html>
